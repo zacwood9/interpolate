@@ -11,7 +11,7 @@ module Data.String.Interpolate (
 ) where
 
 import           Language.Haskell.TH.Quote (QuasiQuoter(..))
-import           Language.Haskell.Meta.Parse (parseExp)
+import           GHC.Meta.Parse (parseExp)
 
 import           Data.String.Interpolate.Internal.Util
 import           Data.String.Interpolate.Parse
@@ -76,8 +76,8 @@ i = QuasiQuoter {
 
             reifyExpression :: String -> Q Exp
             reifyExpression s = case parseExp s of
-              Left _ -> do
-                fail "Parse error in expression!" :: Q Exp
+              Left (_, _, err) -> do
+                fail ("Parse error in expression: " ++ err) :: Q Exp
               Right e -> return e
 
 decodeNewlines :: String -> String
