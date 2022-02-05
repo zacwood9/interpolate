@@ -37,7 +37,7 @@ library
       Paths_interpolate
   build-depends:
       base ==4.*
-    , ghc-meta
+    , ghc-hs-meta
     , template-haskell
   ghc-options: -Wall
   default-language: Haskell2010
@@ -66,7 +66,7 @@ test-suite spec
     , base ==4.*
     , base-compat
     , bytestring
-    , ghc-meta
+    , ghc-hs-meta
     , hspec >=1.5
     , quickcheck-instances
     , template-haskell
